@@ -1,11 +1,13 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import { useChatHistory } from "@/components/chat-sidebar"
 
 export default function PromptInput() {
   const [prompt, setPrompt] = useState("")
   const fileInputRef = useRef(null)
   const textareaRef = useRef(null)
+  const { addChatToHistory } = useChatHistory()
 
   useEffect(() => {
     const textarea = textareaRef.current
@@ -18,9 +20,16 @@ export default function PromptInput() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (prompt.trim()) {
-      console.log("[v0] Prompt submitted:", prompt)
+      console.log("[SalesFun.ai] Prompt submitted:", prompt)
+      
+      // Add to chat history
+      addChatToHistory(prompt.trim())
+      
+      // Clear the input
       setPrompt("")
-      // Handle prompt submission here - could integrate with AI API
+      
+      // Here you would typically send the prompt to your AI API
+      // For now, we'll just log it and add it to history
     }
   }
 
@@ -51,9 +60,9 @@ export default function PromptInput() {
             <button
               type="button"
               onClick={handleFileUpload}
-              className="flex-shrink-0 w-8 h-8 rounded-full bg-transparent hover:bg-white/10 flex items-center justify-center transition-all duration-200 mr-3 mt-1"
+              className="flex-shrink-0 w-12 h-12 rounded-full bg-transparent hover:bg-white/10 flex items-center justify-center transition-all duration-200 mr-3 mt-1"
             >
-              <svg className="w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -77,7 +86,7 @@ export default function PromptInput() {
               onChange={(e) => setPrompt(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Ask Salesfun.ai anything"
-              className="flex-1 bg-transparent text-white placeholder-white/50 text-base focus:outline-none px-2 py-2 resize-none min-h-[24px] max-h-[200px] overflow-y-auto"
+              className="flex-1 bg-transparent text-white placeholder-white/50 text-base focus:outline-none px-2 py-2 resize-none min-h-[24px] max-h-[200px] overflow-y-hidden"
               rows={1}
             />
 

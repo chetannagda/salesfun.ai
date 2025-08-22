@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/hero-content.jsx", "components/pulsing-circle.jsx", "components/theme-provider.jsx", "components/ui/accordion.jsx", "components/ui/alert-dialog.jsx", "components/ui/alert.jsx"],
   "exclude": ["node_modules"]
 }

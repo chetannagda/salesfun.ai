@@ -1,49 +1,44 @@
 "use client"
-
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { useIsMobile } from "@/hooks/use-mobile"
 
-export default function Header() {
+export default function Header({ onToggleSidebar }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const router = useRouter()
+  const isMobile = useIsMobile()
 
   const handleDocsClick = (e) => {
     e.preventDefault()
-    window.location.href = "/docs"
+    router.push("/docs")
   }
 
   const handlePricingClick = (e) => {
     e.preventDefault()
-    window.location.href = "/pricing"
+    router.push("/pricing")
   }
 
-  const handleLoginClick = (e) => {
-    e.preventDefault()
-    if (isLoggedIn) {
-      setIsLoggedIn(false)
-    } else {
-      window.location.href = "/login"
-    }
+  const handleLoginClick = () => {
+    router.push("/login")
   }
 
   return (
     <header className="relative z-20 flex items-center justify-between p-6">
-      <div className="flex items-center">
+      <div className="flex items-center gap-4">
+        {/* Hamburger menu button */}
+        <button
+          onClick={onToggleSidebar}
+          className="p-2 rounded-md hover:bg-white/10 transition-colors"
+          aria-label="Toggle sidebar"
+        >
+          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        
         <h1 className="text-white text-xl font-semibold">SalesFun.ai</h1>
       </div>
 
-      <nav className="flex items-center space-x-2">
-        <button
-          onClick={handleDocsClick}
-          className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200 cursor-pointer"
-        >
-          Docs
-        </button>
-        <button
-          onClick={handlePricingClick}
-          className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200 cursor-pointer"
-        >
-          Pricing
-        </button>
-      </nav>
 
       <div className="flex items-center">
         {isLoggedIn ? (
@@ -58,7 +53,7 @@ export default function Header() {
         ) : (
           <button
             onClick={handleLoginClick}
-            className="px-6 py-2 rounded-full bg-black/20 backdrop-blur-xl border border-white/10 text-white font-normal text-xs transition-all duration-300 hover:bg-black/30 cursor-pointer h-8 flex items-center"
+            className="px-8 py-3 rounded-full bg-black/20 backdrop-blur-xl border border-white/10 text-white font-normal text-sm transition-all duration-300 hover:bg-black/30 cursor-pointer h-12 flex items-center"
           >
             Login
           </button>
