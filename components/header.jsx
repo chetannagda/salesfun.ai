@@ -30,22 +30,7 @@ export default function Header() {
         <h1 className="text-white text-xl font-semibold">SalesFun.ai</h1>
       </div>
 
-      <nav className="flex items-center space-x-2">
-        <button
-          onClick={handleDocsClick}
-          className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200 cursor-pointer"
-        >
-          Docs
-        </button>
-        <button
-          onClick={handlePricingClick}
-          className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200 cursor-pointer"
-        >
-          Pricing
-        </button>
-      </nav>
-
-      <div className="flex items-center">
+      {/* <div className="flex items-center">
         {isLoggedIn ? (
           <button
             onClick={handleLoginClick}
@@ -63,7 +48,7 @@ export default function Header() {
             Login
           </button>
         )}
-      </div>
+      </div> */}
     </header>
   )
 }
