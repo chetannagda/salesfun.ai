@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
-    "target": "ES6",
+    "target": "ES2022",
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
@@ -19,9 +23,21 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
-  "include": ["next-env.d.js", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/hero-content.jsx", "components/theme-provider.jsx", "components/pulsing-circle.jsx", "lib/utils.js", "hooks/use-mobile.js", "hooks/use-toast.js", "components/ui/tooltip.jsx", "components/ui/use-mobile.jsx", "components/ui/use-toast.js", "components/ui/toggle.jsx", "components/ui/toggle-group.jsx", "components/ui/toaster.jsx", "components/ui/toast.jsx", "components/ui/textarea.jsx", "components/ui/tabs.jsx", "components/ui/table.jsx", "components/ui/switch.jsx", "components/ui/sonner.jsx", "components/ui/slider.jsx", "components/ui/skeleton.jsx", "components/ui/sidebar.jsx", "components/ui/sheet.jsx", "components/ui/separator.jsx", "components/ui/select.jsx", "components/ui/scroll-area.jsx", ".next/types/app/layout.js", ".next/types/app/page.js"],
-  "exclude": ["node_modules"]
+  "include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next"
+  ]
 }
